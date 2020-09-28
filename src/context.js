@@ -1,7 +1,21 @@
-import React, { Component } from 'react'
-import Contact from './Contact';
+import React, { Component } from 'react';
 
-class Contacts extends Component {
+const Context = React.createContext();
+
+const reducer = (state, action) => {
+    switch(action.type) {
+        case 'DELETE_CONTACT':
+            return {
+                ...state,
+                contacts: state.contacts.filter(contact => contact.id !== action.payload)
+            }
+        default: 
+            return state;
+    }
+}
+
+export class Provider extends Component {
+
     state = {
             contacts : [
                 {
@@ -28,31 +42,20 @@ class Contacts extends Component {
                     email: 'urmi@gmail.com',
                     phone: '75871-38599'
                 }
-            ]
+            ],
+            dispatch: action => {
+                this.setState(state => reducer(state, action))
+            }
         
         };
-    
-    deleteContact = (id) => {
-        const { contacts } = this.state;
 
-        const newContact = contacts.filter(contact => contact.id !== id);
-
-        this.setState({
-            contacts: newContact
-        });
-    }
-    render() {
-        const { contacts } = this.state;
-        return (
-            <React.Fragment>
-                {
-                    contacts.map(contact => (
-                        <Contact key={contact.id} contact={contact} deleteClickHandler={this.deleteContact.bind(this, contact.id)} />
-                    ))
-                }
-            </React.Fragment>
-        )
-    }
+        render() {
+            return (
+                <Context.Provider value={ this.state }>
+                 {this.props.children}
+                </Context.Provider>
+            )
+        }
 }
 
-export default Contacts;
+export const Consumer = Context.Consumer;
