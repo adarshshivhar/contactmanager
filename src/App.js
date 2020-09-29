@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
+import PageNotFound from './components/pages/PageNotFound';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
               <Route exact path="/" component={Contacts} />
               <Route exact path="/about" component={About} />
               <Route exact path="/contact/add" component={AddContact} />
+              <Route  component={PageNotFound} />
             </Switch>
           </div>
         </div>
