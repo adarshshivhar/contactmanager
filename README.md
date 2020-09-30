@@ -3,6 +3,7 @@
 - This project is called Contact Manager. Here you can manage your contacts
 - You can VIEW, ADD, UPDATE and DELETE contacts.
 - Technologies Used:- Frontend:- React , Backend:- JSON Placeholder
+- Project Link:- [ContactManager](https://adarshshivhar.github.io/contactmanager)
 
 ###
 
