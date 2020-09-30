@@ -2,6 +2,7 @@ import React from 'react';
 import  Contacts  from './components/contacts/Contacts';
 import Header from './components/layout/Header';
 import AddContact from "./components/contacts/AddContact";
+import EditContact from "./components/contacts/EditContact";
 import About from './components/pages/About';
 
 import { Provider } from './context';
@@ -23,7 +24,8 @@ function App() {
               <Route exact path="/" component={Contacts} />
               <Route exact path="/about" component={About} />
               <Route exact path="/contact/add" component={AddContact} />
-              <Route  component={PageNotFound} />
+              <Route exact path="/contact/edit/:id" component={EditContact} />
+              <Route component={PageNotFound} />
             </Switch>
           </div>
         </div>
